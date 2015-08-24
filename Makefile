@@ -171,6 +171,9 @@ MACHINEBUILD=force2plus
 else ifeq ($(MACHINEBUILD),force2)
 MACHINE=dags5
 MACHINEBUILD=force2
+else ifeq ($(MACHINEBUILD),force2se)
+MACHINE=dags5
+MACHINEBUILD=force2se
 else ifeq ($(MACHINEBUILD),megaforce2)
 MACHINE=dags5
 MACHINEBUILD=megaforce2
