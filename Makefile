@@ -350,6 +350,9 @@ MACHINEBUILD=x2plus
 else ifeq ($(MACHINEBUILD),bre2ze)
 MACHINE=ew7362
 MACHINEBUILD=bre2ze
+else ifeq ($(MACHINEBUILD),evomini)
+MACHINE=ch62lc
+MACHINEBUILD=evomini
 
 else ifeq ($(MACHINEBUILD),mutant2400)
 MACHINE=hd2400
