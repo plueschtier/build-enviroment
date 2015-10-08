@@ -138,6 +138,9 @@ MACHINEBUILD=tmnano3t
 else ifeq ($(MACHINEBUILD),tmnanose)
 MACHINE=dags5
 MACHINEBUILD=tmnanose
+else ifeq ($(MACHINEBUILD),tmnanosem2)
+MACHINE=dags5
+MACHINEBUILD=tmnanosem2
 else ifeq ($(MACHINEBUILD),tmnanosecombo)
 MACHINE=dags5
 MACHINEBUILD=tmnanosecombo
