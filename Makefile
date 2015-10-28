@@ -529,6 +529,9 @@ MACHINEBUILD=xpeedlxcs2
 else ifeq ($(MACHINEBUILD),xpeedlxcc)
 MACHINE=ultramini
 MACHINEBUILD=xpeedlxcc
+else ifeq ($(MACHINEBUILD),et7x00mini)
+MACHINE=ultramini
+MACHINEBUILD=et7x00mini
 
 endif
 
