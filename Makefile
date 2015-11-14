@@ -9,6 +9,8 @@ PARALLEL_MAKE ?= -j $(NR_CPU)
 XSUM ?= md5sum
 DISTRO_TYPE ?= release
 DISTRO ?= openatv
+ONLINECHECK_URL ?= "http://google.com"
+ONLINECHECK_TIMEOUT ?= 2
 
 BUILD_DIR = $(CURDIR)/builds/$(DISTRO)/$(DISTRO_TYPE)/$(MACHINE)
 TOPDIR = $(BUILD_DIR)
@@ -606,11 +608,19 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DISTRO MACHINEBUILD"' > $@
-	@echo 'export MACHINE' >> $@
-	@echo 'export DISTRO' >> $@
-	@echo 'export MACHINEBUILD' >> $@
+	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DISTRO MACHINEBUILD BB_SRCREV_POLICY BB_NO_NETWORK"' > $@
+	@echo 'export MACHINE=$(MACHINE)' >> $@
+	@echo 'export DISTRO=$(DISTRO)' >> $@
+	@echo 'export MACHINEBUILD=$(MACHINEBUILD)' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
+	@echo 'echo -n -e "check internet connection: \e[93mWaiting ..."' >> $@
+	@echo 'wget -q --tries=10 --timeout=$(ONLINECHECK_TIMEOUT) --spider $(ONLINECHECK_URL)' >> $@
+	@echo 'if [[ $$? -eq 0 ]]; then' >> $@
+	@echo '  echo -e "\b\b\b\b\b\b\b\b\b\b\b\e[32mOnline      "' >> $@
+	@echo 'else' >> $@
+	@echo '  echo -e "\b\b\b\b\b\b\b\b\b\b\b\e[31mOffline     "' >> $@
+	@echo '  export BB_SRCREV_POLICY="cache"' >> $@
+	@echo 'fi' >> $@
 
 $(DISTRO)_CONF_HASH := $(call hash, \
 	'$(DISTRO)_CONF_VERSION = "1"' \
