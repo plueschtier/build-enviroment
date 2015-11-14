@@ -613,12 +613,12 @@ $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'export DISTRO=$(DISTRO)' >> $@
 	@echo 'export MACHINEBUILD=$(MACHINEBUILD)' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
-	@echo 'echo -n -e "check internet connection: \e[93mWaiting ..."' >> $@
+	@echo 'echo -n -e "check internet connection: \e[93mWaiting ...\e[0m"' >> $@
 	@echo 'wget -q --tries=10 --timeout=$(ONLINECHECK_TIMEOUT) --spider $(ONLINECHECK_URL)' >> $@
 	@echo 'if [[ $$? -eq 0 ]]; then' >> $@
-	@echo '  echo -e "\b\b\b\b\b\b\b\b\b\b\b\e[32mOnline      "' >> $@
+	@echo '  echo -e "\b\b\b\b\b\b\b\b\b\b\b\e[32mOnline      \e[0m"' >> $@
 	@echo 'else' >> $@
-	@echo '  echo -e "\b\b\b\b\b\b\b\b\b\b\b\e[31mOffline     "' >> $@
+	@echo '  echo -e "\b\b\b\b\b\b\b\b\b\b\b\e[31mOffline     \e[0m"' >> $@
 	@echo '  export BB_SRCREV_POLICY="cache"' >> $@
 	@echo 'fi' >> $@
 
