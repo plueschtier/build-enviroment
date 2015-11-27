@@ -490,9 +490,9 @@ MACHINEBUILD=mbmicro
 else ifeq ($(MACHINEBUILD),e4hd)
 MACHINE=7000s
 MACHINEBUILD=e4hd
-else ifeq ($(MACHINEBUILD),e4hdc)
+else ifeq ($(MACHINEBUILD),e4hdhybrid)
 MACHINE=7000s
-MACHINEBUILD=e4hdc
+MACHINEBUILD=e4hdhybrid
 else ifeq ($(MACHINEBUILD),twinboxlcd)
 MACHINE=7100s
 MACHINEBUILD=twinboxlcd
