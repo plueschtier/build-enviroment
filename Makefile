@@ -561,9 +561,9 @@ MACHINEBUILD=gbx1
 else ifeq ($(MACHINEBUILD),gbx3)
 MACHINE=gb7362
 MACHINEBUILD=gbx3
-else ifeq ($(MACHINEBUILD),gbuad)
+else ifeq ($(MACHINEBUILD),gbquad)
 MACHINE=gb7356
-MACHINEBUILD=gbuad
+MACHINEBUILD=gbquad
 else ifeq ($(MACHINEBUILD),gbquadplus)
 MACHINE=gb7356
 MACHINEBUILD=gbquadplus
