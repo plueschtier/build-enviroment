@@ -494,6 +494,9 @@ MACHINEBUILD=zgemmah2s
 else ifeq ($(MACHINEBUILD),zgemmah2h)
 MACHINE=h3
 MACHINEBUILD=zgemmah2h
+else ifeq ($(MACHINEBUILD),zgemmaslc)
+MACHINE=lc
+MACHINEBUILD=zgemmaslc
 
 else ifeq ($(MACHINEBUILD),mbmicro)
 MACHINE=7000s
